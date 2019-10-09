@@ -14,20 +14,26 @@
 // });
 
 $(document).ready( () => { 
-  let $form = $('#new-tweet');
-  
-  $form.submit( (event) => {
-  event.preventDefault();
-  console.log('serialized: ', $(this).serialize() );
 
-  console.log('Button clicked, performing AJAX call...');
-  $.ajax( { method: 'POST' })
-  .then( (data) => {
-    data: $(this).serialize();
+
+
+const loadTweets = () => { // grabs tweet feed via GET
+  $.ajax({
+    method: 'GET',
+    url: '/tweets',
+    data: {
+      format: 'json'
+    }
   })
-});
+  .done(function(tweets){
+    renderTweets(tweets);
+    console.log('SUCCESS', tweets);
+  })
+};
 
-createTweetElement = (data) => { // uses article template to create new tweet with same style
+loadTweets();
+
+const createTweetElement = (data) => { // uses article template to create new tweet with same style
   return `<article class='past-tweet'>
   <header>
     <div class='holder'>
@@ -40,7 +46,7 @@ createTweetElement = (data) => { // uses article template to create new tweet wi
   <p class='tweet-body'>${data.content.text}</p>
 
   <footer>
-    <label>Created at: ${data.created_at}</label>
+    <time class='timeago' datetime=${new Date(data.created_at)}></time>
     <label>Like ♥</label>
   </footer>
 </article>`
@@ -49,36 +55,37 @@ createTweetElement = (data) => { // uses article template to create new tweet wi
 const renderTweets = (tweets) => { // renders 1 or more tweet objects into tweets on the webpage
   for(const tweetData of tweets) {
     let $tweet = createTweetElement(tweetData);
-    $('.tweet-container').append($tweet);
+    $('.tweet-container').prepend($tweet);
   }
 }
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
 
-renderTweets(data);
+$('#new-tweet').submit(function(event) { // actions when form is submitted
+  
+  event.preventDefault(); // removing default page redirection behaviour
+
+  let $input = $('#tweet-input').val();
+  if ($input.length === 0) { // no characters ERROR message
+    alert('\n ERROR: \n\n No characters in input');
+
+  } else if ($input.length > 140) { // too many characters ERROR message
+    alert('\n ERROR: \n\n Over maximum character limit');
+
+  } else { // AJAX POST request on the new tweet form
+    $.ajax({
+      method: 'POST',
+      url: '/tweets', 
+      data: $(this).serialize(),
+    })
+    .done(function(data) { // 
+      $('.tweet-container').empty();
+      loadTweets(data);
+    });
+  }
+});
+
+
+
 
 
 });

@@ -38,3 +38,7 @@
   font-family: 'Bungee', sans-serif;
   color: #800000;
 }
+
+#tweet-button:hover {
+  cursor: pointer;
+}
