@@ -1,0 +1,66 @@
+.past-tweet {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  width: 75%;
+  margin: 33px auto;
+  padding: 0 10px 10px;
+  opacity: 0.6;
+  transition: opacity 1s, box-shadow 0.5s;
+}
+
+.holder {
+  display: relative;
+}
+
+.past-tweet header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar {
+  width: 60px;
+}
+
+.name {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.handle {
+  display: relative;
+  font-size: 21px;
+  padding: 6px 0px 0px 6px;
+  opacity: 0;
+  transition: opacity 1s
+}
+
+.past-tweet footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.tweet-body {
+  font-style: italic;
+  border-bottom: 3px solid black;
+  padding-bottom: 20px;
+  margin: 20px 0px
+}
+
+/*  HOVER STATE  */
+
+.past-tweet:hover {
+  font-weight: 400;
+  box-shadow: 5px 5px 5px aqua;
+  opacity: 1;
+  transition: opacity 1s, box-shadow 0.5s;
+}
+
+.past-tweet:hover .handle {
+  opacity: 1;
+  transition: opacity 1s
+}
+
+
+

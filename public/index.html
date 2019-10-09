@@ -4,28 +4,81 @@
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
+    <!-- Reset CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel='stylesheet' href='/styles/nav.css' type='text/css' />
+    <link rel='stylesheet' href='/styles/header.css' type='text/css' />
+    <link rel='stylesheet' href='/styles/new-tweet.css' type='text/css' />
+    <link rel='stylesheet' href='/styles/past-tweet.css' type='text/css' />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,400,700,700i&display=swap" rel="stylesheet">
   </head>
 
   <body>
 
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span>tweeter</span>
+      <span id='logo' >tweeter</span>
+      <span><strong>Write</strong> a new tweet</span>
     </nav>
+
+    <header id='cover-header'>
+      <div>
+        <img id='profile-pic' src="https://i.ibb.co/6m3C3wp/oie-trim-image.png">
+      </div>
+      <div>
+        <p id='profile-name'><strong style='font-weight: 700'>Jackson</strong> Stark</p>
+      </div>
+    </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <section id='main-page'>
+
+        <!-- NEW TWEET -->
+        <section id='current-tweet'>
+          <h2>Compose Tweet</h2>
+          <form id='new-tweet' action='/tweets' method='POST'>
+              <textarea id='tweet-input' rows='1' name="text" placeholder="What are you humming about?"></textarea>
+              <footer id='tweet-footer'>
+                <input id='tweet-button' type="submit" value="Tweet">
+                <span id="word-counter">140</span>
+              </footer>
+            </form>
+          </section>
+
+        <!-- PAST TWEET -->
+        <section class='tweet-container'>
+          <article class='past-tweet'>
+            <header>
+              <div class='holder'>
+                <img class='avatar' src='https://i.ibb.co/6m3C3wp/oie-trim-image.png'>
+                <p class='name'>Jackson</p>
+              </div>
+              <span class='handle'>@Stark33</span>
+            </header>
+
+            <p class='tweet-body'>How much does a polar bear weigh? Enough to break the ice... I'm Jackson nice to meet u. </p>
+
+            <footer>
+              <label>13 days ago</label>
+              <label>Like ♥</label>
+            </footer>
+          </article>
+        </section>
+
+      </section>
     </main>
 
   </body>

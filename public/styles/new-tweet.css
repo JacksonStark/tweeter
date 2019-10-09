@@ -1,0 +1,40 @@
+#current-tweet {
+  margin: 0 auto;
+  width: 70%;
+}
+
+#new-tweet {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 44px;
+}
+
+#tweet-input {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: solid black 5px;
+  background: none;
+  margin-bottom: 20px;
+}
+
+#tweet-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#tweet-button {
+  border-radius: 25px;
+  border: solid black 3px;
+  background: aqua;
+  font-family: 'Bungee', sans-serif;
+}
+
+#word-counter {
+  font-family: 'Bungee', sans-serif;
+}
+
+.redCounter {
+  font-family: 'Bungee', sans-serif;
+  color: #800000;
+}
