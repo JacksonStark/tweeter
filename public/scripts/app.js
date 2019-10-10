@@ -15,8 +15,6 @@
 
 $(document).ready( () => { 
 
-
-
 const loadTweets = () => { // grabs tweet feed via GET
   $.ajax({
     method: 'GET',
@@ -27,11 +25,16 @@ const loadTweets = () => { // grabs tweet feed via GET
   })
   .done(function(tweets){
     renderTweets(tweets);
-    console.log('SUCCESS', tweets);
   })
 };
 
 loadTweets();
+
+const escape =  function(str) { // creates text node to prevent malicious attacks
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 const createTweetElement = (data) => { // uses article template to create new tweet with same style
   return `<article class='past-tweet'>
@@ -43,10 +46,10 @@ const createTweetElement = (data) => { // uses article template to create new tw
     <label class='handle'>${data.user.handle}</label>
   </header>
 
-  <p class='tweet-body'>${data.content.text}</p>
+  <p class='tweet-body'>${escape(data.content.text)}</p>
 
   <footer>
-    <time class='timeago' datetime=${new Date(data.created_at)}></time>
+    <time class='timeago' datetime=${new Date(data.created_at).toISOString()}></time>
     <label>Like ♥</label>
   </footer>
 </article>`
@@ -57,8 +60,11 @@ const renderTweets = (tweets) => { // renders 1 or more tweet objects into tweet
     let $tweet = createTweetElement(tweetData);
     $('.tweet-container').prepend($tweet);
   }
+  $(function() {
+    // Initialize timeago on all the <time> elements with the timeago class
+    $("time.timeago").timeago();
+});
 }
-
 
 $('#new-tweet').submit(function(event) { // actions when form is submitted
   
@@ -66,12 +72,16 @@ $('#new-tweet').submit(function(event) { // actions when form is submitted
 
   let $input = $('#tweet-input').val();
   if ($input.length === 0) { // no characters ERROR message
-    alert('\n ERROR: \n\n No characters in input');
+    $('#tweet-error').text('Does a 0 character tweet make sense? 🤔');
+    $('#tweet-error').slideDown('slow').addClass('error-display');
 
   } else if ($input.length > 140) { // too many characters ERROR message
-    alert('\n ERROR: \n\n Over maximum character limit');
+    $('#tweet-error').text("Let's not be negative. Stay below 140 characters. 🤓");
+    $('#tweet-error').slideDown('slow').addClass('error-display');
 
   } else { // AJAX POST request on the new tweet form
+    $('#tweet-error').slideUp('fast').removeClass('error-display') // remove errors
+
     $.ajax({
       method: 'POST',
       url: '/tweets', 
@@ -79,13 +89,17 @@ $('#new-tweet').submit(function(event) { // actions when form is submitted
     })
     .done(function(data) { // 
       $('.tweet-container').empty();
+      console.log(data);
       loadTweets(data);
+      $('#tweet-input').val('');
+      $('#word-counter').text('140');
     });
   }
 });
 
-
-
-
+$('#new-tweet-toggle img').click(function() { // toggles slide phase of current tweet
+  $('#current-tweet').slideToggle('slow');
+  $('#tweet-input').focus()
+});
 
 });

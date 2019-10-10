@@ -17,7 +17,7 @@
     <!-- External JS -->
     <script defer type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
     <!-- Timeago -->
-    <script defer type="text/javascript" src="jquery.timeago.js"></script>
+    <script defer type="text/javascript" src="/vendor/jquery.timeago.js"></script>
 
     <!-- App JS -->
     <script defer type="text/javascript" src="/scripts/app.js"></script>
@@ -28,42 +28,48 @@
   </head>
 
   <body>
-
     <!-- Top nav bar (fixed) -->
     <nav>
       <span id='logo' >tweeter</span>
-      <span><strong>Write</strong> a new tweet</span>
+      <div id='new-tweet-toggle'>
+        <label><strong>Write</strong> a new tweet</label>
+        <img class='vert-move' src='/images/arrow.png'>
+      </div>
     </nav>
 
-    <header id='cover-header'>
-      <div>
-        <img id='profile-pic' src="https://i.ibb.co/6m3C3wp/oie-trim-image.png">
-      </div>
-      <div>
-        <p id='profile-name'><strong style='font-weight: 700'>Jackson</strong> Stark</p>
-      </div>
-    </header>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section id='main-page'>
-
+    <main>
+      <header id='cover-header'>
+        <div>
+          <img id='profile-pic' src="https://i.ibb.co/6m3C3wp/oie-trim-image.png">
+        </div>
+        <div>
+          <p id='profile-name'><strong style='font-weight: 700'>Jackson</strong> Stark</p>
+        </div>
+      </header>
+  
+      <!-- Page-specific (main) content here -->
+      <section id='feed'>
+  
         <!-- NEW TWEET -->
         <section id='current-tweet'>
           <h2>Compose Tweet</h2>
           <form id='new-tweet' action='/tweets' method='POST'>
-              <textarea id='tweet-input' rows='1' name="text" placeholder="What are you humming about?"></textarea>
-              <footer id='tweet-footer'>
-                <input id='tweet-button' type="submit" value="Tweet">
-                <span id="word-counter">140</span>
-              </footer>
-            </form>
-          </section>
-
+            <textarea id='tweet-input' rows='1' name="text" placeholder="What are you humming about?"></textarea>
+  
+            <!-- ERROR MESSAGE -->
+            <label id='tweet-error' class='error-hidden'>default error</label>
+            
+            <footer id='tweet-footer'>
+              <input id='tweet-button' type="submit" value="Tweet">
+              <span id="word-counter">140</span>
+            </footer>
+          </form>
+        </section>
+  
         <!-- PAST TWEET -->
         <section class='tweet-container'>
         </section>
-
+  
       </section>
     </main>
 

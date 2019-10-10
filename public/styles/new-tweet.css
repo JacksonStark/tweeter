@@ -1,12 +1,13 @@
 #current-tweet {
   margin: 0 auto;
   width: 70%;
+  display: none;
 }
 
 #new-tweet {
   display: flex;
   flex-direction: column;
-  margin-bottom: 44px;
+
 }
 
 #tweet-input {
@@ -15,12 +16,17 @@
   border-left: none;
   border-bottom: solid black 5px;
   background: none;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+#tweet-input:focus {
+  outline: none;
 }
 
 #tweet-footer {
   display: flex;
   justify-content: space-between;
+  margin-top: 11px;
 }
 
 #tweet-button {
@@ -28,6 +34,10 @@
   border: solid black 3px;
   background: aqua;
   font-family: 'Bungee', sans-serif;
+}
+
+#tweet-button:focus {
+  outline: none;
 }
 
 #word-counter {
@@ -41,4 +51,22 @@
 
 #tweet-button:hover {
   cursor: pointer;
+}
+
+.error-hidden {
+  display: none;
+  color: maroon;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.error-display {
+  display: unset;
+}
+
+@media only screen and (min-width: 1024px) {
+  #current-tweet h2 {
+    margin-block-start: 0;
+  }
 }

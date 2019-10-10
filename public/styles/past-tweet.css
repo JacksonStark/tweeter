@@ -28,7 +28,6 @@
 }
 
 .handle {
-  display: relative;
   font-size: 21px;
   padding: 6px 0px 0px 6px;
   opacity: 0;
