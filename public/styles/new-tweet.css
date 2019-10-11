@@ -2,6 +2,7 @@
   margin: 0 auto;
   width: 70%;
   display: none;
+  max-width: 70%;
 }
 
 #new-tweet {

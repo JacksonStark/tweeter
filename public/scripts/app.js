@@ -50,7 +50,7 @@ const createTweetElement = (data) => { // uses article template to create new tw
 
   <footer>
     <time class='timeago' datetime=${new Date(data.created_at).toISOString()}></time>
-    <label>Like ♥</label>
+    <label>🇨🇦♻️❤️</label>
   </footer>
 </article>`
 }
@@ -89,7 +89,7 @@ $('#new-tweet').submit(function(event) { // actions when form is submitted
     })
     .done(function(data) { // 
       $('.tweet-container').empty();
-      console.log(data);
+      
       loadTweets(data);
       $('#tweet-input').val('');
       $('#word-counter').text('140');
