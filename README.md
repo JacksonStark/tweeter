@@ -6,24 +6,17 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Project
 
-## Final Product
+##### Screenshot of Mobile Layout
 
-##### Screenshot of URLs Dashboard Page
+!["Screenshot of Mobile Layout"](https://github.com/JacksonStark/tweeter/blob/master/screenshots/mobile-version.jpg?raw=true)
 
-!["Screenshot of Mobile Layout"](https://github.com/JacksonStark/tinyapp/blob/master/docs/urls-page.jpg?raw=true)
+##### Screenshot of Desktop Layout
 
-##### Screenshot of Create New URL Page
+!["Screenshot of Desktop Layout"](https://github.com/JacksonStark/tweeter/blob/master/screenshots/desktop-version.jpg?raw=true)
 
-!["Screenshot of Desktop Layout"](https://github.com/JacksonStark/tinyapp/blob/master/docs/create-url-page.jpg?raw=true)
+##### Screenshot of Exceeded Character Count Error
 
-##### Screenshot of Short URL Page
-
-!["Screenshot of Exceeded Character Count Error"](https://github.com/JacksonStark/tinyapp/blob/master/docs/short-url-page.jpg?raw=true)
-
-##### Screenshot of Not Logged In Redirection Page
-
-!["Screenshot of Redirection Page if not logged in"](https://github.com/JacksonStark/tinyapp/blob/master/docs/redirection-page.jpg?raw=true)
-
+!["Screenshot of Exceeded Character Count Error"](https://github.com/JacksonStark/tweeter/blob/master/screenshots/character-count-error.jpg?raw=true)
 
 
 ## Getting Started
